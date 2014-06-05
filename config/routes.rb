@@ -1,5 +1,11 @@
 Ragereplay::Application.routes.draw do
-  resources :articles
+  resources :articles do
+  #->Prelang (voting/acts_as_votable)
+  member do
+    get "vote"
+  end
+end
+
 
   resources :mentions do
   #->Prelang (voting/acts_as_votable)

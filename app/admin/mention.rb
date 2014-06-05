@@ -1,4 +1,5 @@
 ActiveAdmin.register Mention do
+  permit_params :content
 
   
   # See permitted parameters documentation:

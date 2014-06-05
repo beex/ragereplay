@@ -1,4 +1,5 @@
 ActiveAdmin.register Article do
+  permit_params :title, :content
 
   
   # See permitted parameters documentation:

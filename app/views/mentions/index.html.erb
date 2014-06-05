@@ -1,0 +1,31 @@
+<h1>Listing mentions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Article</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mentions.each do |mention| %>
+      <tr>
+        <td><%= mention.content %></td>
+        <td><%= mention.article %></td>
+        <td><%= mention.user %></td>
+        <td><%= link_to 'Show', mention %></td>
+        <td><%= link_to 'Edit', edit_mention_path(mention) %></td>
+        <td><%= link_to 'Destroy', mention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mention', new_mention_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @mention.content %>
+</p>
+
+<p>
+  <strong>Article:</strong>
+  <%= @mention.article %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @mention.user %>
+</p>
+
+<%= link_to 'Edit', edit_mention_path(@mention) %> |
+<%= link_to 'Back', mentions_path %>

@@ -1,31 +1,36 @@
-<h1>Listing mentions</h1>
-
-<table>
+<%- model_class = Mention -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Mention %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Content</th>
-      <th>Article</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:content) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @mentions.each do |mention| %>
       <tr>
+        <td><%= mention.id %></td>
         <td><%= mention.content %></td>
-        <td><%= mention.article %></td>
-        <td><%= mention.user %></td>
-        <td><%= link_to 'Show', mention %></td>
-        <td><%= link_to 'Edit', edit_mention_path(mention) %></td>
-        <td><%= link_to 'Destroy', mention, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l mention.created_at, format: :long %></td>
+        <td>
+          <%= link_to mention_path(mention), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to mention_path(mention), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Mention', new_mention_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_mention_path,
+            :class => 'btn btn-primary' %>

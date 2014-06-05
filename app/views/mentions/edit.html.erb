@@ -1,6 +1,5 @@
-<h1>Editing mention</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @mention %> |
-<%= link_to 'Back', mentions_path %>
+<%- model_class = Mention -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Mention %></h1>
+</div>
+<%= render :partial => 'form' %>

@@ -29,6 +29,7 @@ class MentionsController < ApplicationController
   # POST /mentions.json
   def create
     @mention = Mention.new(mention_params)
+    @mention.user = current_user
 
     respond_to do |format|
       if @mention.save
